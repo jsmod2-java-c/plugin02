@@ -16,6 +16,7 @@ import cn.jsmod2.core.utils.config.JsonConfig;
 /* 启用自动监听器和指令注册的注解,如果不想手动注册,可以加入这个注解 */
 //假如不加这个注解，那么需要在onEnable中手动注册这个监听器
 @EnableRegister
+//LoadBefore可以使得里面指定名字的插件在其之前加载
 @LoadBefore(pluginName = "example")
 //Assembly类似于组件,一旦使用了组件注解,它的单例对象就会注册到对象池中
 //之后在有@Assembly注解的类中使用@Auto来注入,这里参见其他两个类如何使用的
