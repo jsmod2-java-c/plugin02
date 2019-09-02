@@ -24,6 +24,8 @@ import cn.jsmod2.core.utils.config.JsonConfig;
 public class ExamplePlugin04 extends PluginBase {
 
     /**
+     * 最新版本中,你可以完全抛弃这个方式获取,可以通过使用Assembly来直接在其他地方
+     * 注入,直接注入的方式比这种方式更优秀和耦合度更低
      * 它的作用是为了使得其他对象获得主类，以获取主类的信息
      * 这样我在监听器是可以获取到的
      * 但是如果要让监听器获取到这个对象
