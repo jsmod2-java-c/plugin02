@@ -2,6 +2,8 @@ package net.noyark.command;
 
 import cn.jsmod2.core.CommandSender;
 import cn.jsmod2.core.Powers;
+import cn.jsmod2.core.annotations.Assembly;
+import cn.jsmod2.core.annotations.Auto;
 import cn.jsmod2.core.command.Command;
 import cn.jsmod2.core.plugin.Plugin;
 import cn.jsmod2.core.plugin.PluginBase;
@@ -11,8 +13,12 @@ import cn.jsmod2.core.plugin.PluginBase;
  * 这里是命令部分
  *
  */
+@Assembly
 public class TestCommand extends Command {
 
+    //直接把PluginBase的单例对象注入
+    @Auto
+    private PluginBase base;
     /**
      * 注册构造方法
      * commandName是命令名称
@@ -46,7 +52,8 @@ public class TestCommand extends Command {
      */
     @Override
     public boolean execute(CommandSender commandSender, String[] strings) {
-        ((PluginBase)getPlugin()).info("执行命令成功");
+        System.out.println(base);
+        base.info("执行命令成功");
         return true;//true代表执行成功
     }
 }

@@ -2,16 +2,23 @@ package net.noyark.listener;
 
 import cn.jsmod2.api.event.admin.IBanEvent;
 import cn.jsmod2.api.event.player.IPlayerJoinEvent;
+import cn.jsmod2.core.annotations.Assembly;
+import cn.jsmod2.core.annotations.Auto;
 import cn.jsmod2.core.annotations.EventManager;
 import cn.jsmod2.core.event.Listener;
+import cn.jsmod2.core.plugin.PluginBase;
 import cn.jsmod2.core.utils.EventPriority;
-import net.noyark.ExamplePlugin04;
 
 /**
  * 玩家监听器，监听玩家的一系列信息
  * 如加入等等
  */
+@Assembly
 public class PlayerListener implements Listener {
+
+
+    @Auto
+    private PluginBase base;
 
     //@EventManager的作用是标记这个方法是一个监听器方法，之后事件调度器会把它加载到映射
     //最终实现事件触发的切面处理(就是触发事件执行这个方法)
@@ -26,7 +33,7 @@ public class PlayerListener implements Listener {
      */
     @EventManager
     public void onPlayerJoin(IPlayerJoinEvent e){
-        if(ExamplePlugin04.getPluginBase().getServer().getGameServer().getPlayers().size()>=2) {
+        if(base.getServer().getGameServer().getPlayers().size()>=2) {
             e.getPlayer().personalBroadcast(10, e.getPlayer().getName() + "你好", false);
             e.getPlayer().kill();
         }
